@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 
 class AddProduct(BasePage):
+
     def should_be_button_add_basket(self):
         assert self.browser.find_element(*AddProductPageLocators.BTN_ADD_TO_BASKET), "Add to basket button not presented"
 

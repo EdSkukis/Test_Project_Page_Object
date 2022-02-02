@@ -1,4 +1,5 @@
 from .locators import BasePageLocators
+from .locators import LoginPageLocators
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
@@ -8,6 +9,13 @@ import math
 
 
 class BasePage():
+    def is_element_present(self, how, what):
+        try:
+            self.browser.find_element(how, what)
+        except (NoSuchElementException):
+            return False
+        return True
+
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
@@ -19,8 +27,14 @@ class BasePage():
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
         link.click()
+        assert self.is_element_present(*LoginPageLocators.LOGIN_USERNAME), "Login link is not presented"
 
     def should_be_login_link(self):
+        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def test_guest_can_go_to_login_page_from_product_page(self):
+        add_to_busket_button = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+        add_to_busket_button.click()
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
     def is_not_element_present(self, how, what, timeout=4):
