@@ -1,5 +1,4 @@
 from selenium.common.exceptions import NoAlertPresentException  # в начале файла
-
 from .base_page import BasePage
 from .locators import AddProductPageLocators
 from selenium.webdriver.common.by import By
@@ -29,7 +28,6 @@ class AddProduct(BasePage):
 
         assert product_price == basket_price, "Product price and basket price is not equal"
 
-
     def add_product_to_basket(self):
         self.should_be_name_of_product()
         self.should_be_price_of_product()
@@ -41,4 +39,28 @@ class AddProduct(BasePage):
         BasePage.solve_quiz_and_get_code(self)
         self.should_be_msg_about_adding()
         self.compare_basket_and_product_price()
+
+    def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
+        # Открываем страницу товара
+        # Добавляем товар в корзину
+        self.add_product_to_basket()
+        # Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+        assert self.is_not_element_present(*AddProductPageLocators.MESSAGE_ABOUT_ADDING), \
+            "Есть сообщения об Добавляем товар в корзину"
+
+    def test_guest_cant_see_success_message(self):
+        # Открываем страницу товара
+        # Проверяем, что нет сообщения об успехе с помощью is_not_element_present
+        assert self.is_not_element_present(*AddProductPageLocators.BTN_ADD_TO_BASKET), \
+            "Есть кнопка Add basket"
+
+    def test_message_disappeared_after_adding_product_to_basket(self):
+        # Открываем страницу товара
+        # Добавляем товар в корзину
+        self.add_product_to_basket()
+        # Проверяем, что нет сообщения об успехе с помощью is_disappeared
+        assert self.is_disappeared(*AddProductPageLocators.MESSAGE_ABOUT_ADDING), \
+            "Есть сообщения об Добавляем товар в корзину"
+
+
 
