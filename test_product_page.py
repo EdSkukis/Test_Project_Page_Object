@@ -6,5 +6,6 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page = BasePage(browser, link)
     page.open()
     page.should_be_login_link()
-    page.test_guest_can_go_to_login_page_from_product_page()
+    # page.test_guest_can_go_to_login_page_from_product_page()
+
 

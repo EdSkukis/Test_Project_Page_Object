@@ -29,3 +29,9 @@ class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
+class BasketPageLocator():
+    SUB_HEAD = (By.CSS_SELECTOR, "#promotions > section:nth-child(1) > div > h2")
+    BTN_BASKET = (By.CSS_SELECTOR, '#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a')
+    BASKET_EMPTY_TEXT = (By.CSS_SELECTOR, '#content_inner > p')
+    BASKET_NOT_EMPTY = (By.CSS_SELECTOR,'#content_inner > div.basket-title.hidden-xs > div > h2')
+
