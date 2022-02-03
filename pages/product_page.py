@@ -1,6 +1,7 @@
 from selenium.common.exceptions import NoAlertPresentException  # в начале файла
 from .base_page import BasePage
 from .locators import AddProductPageLocators
+from .locators import BasePageLocators
 from selenium.webdriver.common.by import By
 
 
@@ -62,6 +63,9 @@ class AddProduct(BasePage):
         # Проверяем, что нет сообщения об успехе с помощью is_disappeared
         assert self.is_disappeared(*AddProductPageLocators.MESSAGE_ABOUT_ADDING), \
             "Есть сообщения об Добавляем товар в корзину"
+
+    def test_guest_can_go_to_login_page_from_product_page(self):
+        assert self.browser.find_element(*BasePageLocators.LOGIN_LINK), "Not should login link"
 
 
 

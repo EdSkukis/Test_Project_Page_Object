@@ -1,7 +1,12 @@
 from .base_page import BasePage
+from .locators import LoginPageLocators
+from .locators import BasePageLocators
 
 
 class LoginPage(BasePage):
+    def should_be_login_link(self):
+        self.browser.find_element(*BasePageLocators.LOGIN_LINK), "Not should login link"
+
     def should_be_login_page(self):
         self.should_be_login_url()
         self.should_be_login_form()
