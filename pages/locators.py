@@ -10,6 +10,9 @@ class LoginPageLocators():
     LOGIN_PASSWORD = (By.CSS_SELECTOR, "#id_login-password")
     LOGIN_BUTTON_LOG_IN = (By.CSS_SELECTOR, "#login_form > button")
 
+    LOGIN_NEW_USER_OK = (By.CSS_SELECTOR,'#messages > div > div')
+    USER_IS_LOGIN = (By.CSS_SELECTOR,'#logout_link')
+
     # Regestration
     LOGIN_REG_USERNAME = (By.CSS_SELECTOR, "#id_registration-email")
     LOGIN_REG_PASSWORD_1 = (By.CSS_SELECTOR, "#id_registration-password1")
@@ -18,7 +21,7 @@ class LoginPageLocators():
 
 class AddProductPageLocators():
     BTN_ADD_TO_BASKET = (By.CSS_SELECTOR, '#add_to_basket_form > button')
-    PRODUCT_NAME = (By.CSS_SELECTOR, '.product_main > h1')
+    PRODUCT_NAME = (By.CSS_SELECTOR, '#content_inner > article > div.row > div.col-sm-6.product_main > h1')
     PRODUCT_PRICE = (By.CSS_SELECTOR, '.price_color:nth-child(2)')
 
 

@@ -38,11 +38,11 @@ class AddProduct(BasePage):
         add_to_busket_button = self.browser.find_element(*AddProductPageLocators.BTN_ADD_TO_BASKET)
         add_to_busket_button.click()
 
-        BasePage.solve_quiz_and_get_code(self)
+        #BasePage.solve_quiz_and_get_code(self)
         self.should_be_msg_about_adding()
         self.compare_basket_and_product_price()
 
-    def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
+    def guest_cant_see_success_message_after_adding_product_to_basket(self):
         # Открываем страницу товара
         # Добавляем товар в корзину
         self.add_product_to_basket()
@@ -50,13 +50,13 @@ class AddProduct(BasePage):
         assert self.is_not_element_present(*AddProductPageLocators.MESSAGE_ABOUT_ADDING), \
             "Есть сообщения об Добавляем товар в корзину"
 
-    def test_guest_cant_see_success_message(self):
+    def guest_cant_see_success_message(self):
         # Открываем страницу товара
         # Проверяем, что нет сообщения об успехе с помощью is_not_element_present
         assert self.is_not_element_present(*AddProductPageLocators.BTN_ADD_TO_BASKET), \
             "Есть кнопка Add basket"
 
-    def test_message_disappeared_after_adding_product_to_basket(self):
+    def message_disappeared_after_adding_product_to_basket(self):
         # Открываем страницу товара
         # Добавляем товар в корзину
         self.add_product_to_basket()
@@ -64,7 +64,7 @@ class AddProduct(BasePage):
         assert self.is_disappeared(*AddProductPageLocators.MESSAGE_ABOUT_ADDING), \
             "Есть сообщения об Добавляем товар в корзину"
 
-    def test_guest_can_go_to_login_page_from_product_page(self):
+    def guest_can_go_to_login_page_from_product_page(self):
         assert self.browser.find_element(*BasePageLocators.LOGIN_LINK), "Not should login link"
 
 

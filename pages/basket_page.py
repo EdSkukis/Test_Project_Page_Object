@@ -1,3 +1,5 @@
+from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoAlertPresentException
 from .base_page import BasePage
 from .locators import BasketPageLocator
 from selenium.webdriver.common.by import By
@@ -25,7 +27,7 @@ class BasketPage(BasePage):
         assert self.is_element_present(*BasketPageLocator.BASKET_NOT_EMPTY) == False, "Товар уже есть"
 
 
-    def test_guest_cant_see_product_in_basket_opened_from_main_page(self):
+    def guest_cant_see_product_in_basket_opened_from_main_page(self):
         # Гость открывает главную страницу
         self.should_be_head_link()
 
@@ -39,7 +41,7 @@ class BasketPage(BasePage):
         # Ожидаем, что есть текст о том что корзина пуста
         self.check_basket_is_empty_text()
 
-    def test_guest_cant_see_product_in_basket_opened_from_product_page(self):
+    def guest_cant_see_product_in_basket_opened_from_product_page(self):
         # Гость открывает страницу товара
         self.should_be_head_link()
         # Переходит в корзину по кнопке в шапке
