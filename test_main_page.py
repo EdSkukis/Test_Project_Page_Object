@@ -13,7 +13,7 @@ class TestLoginFromMainPage():
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
         page = AddProduct(browser, link)
         page.open()
-        page.test_guest_can_go_to_login_page_from_product_page()
+        page.guest_can_go_to_login_page_from_product_page()
 
     def test_guest_should_see_login_link(self, browser):
         # реализация теста
@@ -26,4 +26,4 @@ def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
     link = "http://selenium1py.pythonanywhere.com/"
     page = BasketPage(browser, link)
     page.open()
-    page.test_guest_cant_see_product_in_basket_opened_from_main_page()
+    page.guest_cant_see_product_in_basket_opened_from_main_page()
