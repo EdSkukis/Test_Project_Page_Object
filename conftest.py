@@ -15,6 +15,6 @@ def browser(request):
     browser = None
     options = Options()
     options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
-    browser = webdriver.Chrome(executable_path="c:/webdrive/chromedriver.exe", options=options)
+    browser = webdriver.Chrome(options=options)
     yield browser
     browser.quit()
